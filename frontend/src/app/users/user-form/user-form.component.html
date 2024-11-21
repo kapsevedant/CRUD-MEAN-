@@ -1,0 +1,39 @@
+<div>
+  <h2 *ngIf="!editUserId" class="text-primary">Add User</h2>
+  <h2 *ngIf="editUserId" class="text-primary">Update User</h2>
+
+  <form class="">
+    <div>
+      <form [formGroup]="userForm" class="example-form">
+        <mat-form-field class="w-100">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Age</mat-label>
+          <input type="number" matInput formControlName="age">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Address</mat-label>
+          <input type="text" matInput formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+      </form>
+
+    </div>
+    <div class="d-flex justify-content-center">
+      <!-- Conditionally call addUser() or updateUser() based on editUserId -->
+      <button mat-raised-button color="accent" (click)="editUserId ? updateUser() : addUser()">
+        <span *ngIf="!editUserId">Add</span>
+        <span *ngIf="editUserId">Update</span>
+      </button>
+    </div>
+  </form>
+</div>
